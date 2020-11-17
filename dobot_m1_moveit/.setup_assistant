@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: dobot_m1_description
+    relative_path: robot/dobot_m1_in_world.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/Eddie.srdf
+  CONFIG:
+    author_name: YUWEN
+    author_email: yuwenchen@neweraai.com
+    generated_timestamp: 1597383245
