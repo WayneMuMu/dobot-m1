@@ -6,7 +6,6 @@
 - dobot_m1_moveit: moveit configuration 
 - dobot_m1_demos: simple point to point demo 
 
-
 ## Starting the package:
 ```
 roslaunch dobot_m1_hwi dobot_m1_hwi.launch
