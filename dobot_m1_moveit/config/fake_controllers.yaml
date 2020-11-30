@@ -1,0 +1,10 @@
+controller_list:
+  - name: fake_arm_controller
+    joints:
+      - dobot_m1_z_axis_joint
+      - dobot_m1_axis_2_joint
+      - dobot_m1_axis_3_joint
+      - dobot_m1_gripper_joint
+  - name: fake_gripper_controller
+    joints:
+      - M14_joint
