@@ -12,7 +12,7 @@
 #include <algorithm>
 #include <sstream>
 #include "dobot_m1_hwi/dobot_m1_hwi.h"
-#include "nkg_demo_msgs/XYZ.h"
+#include "nkg_demo_msgs/GetXYZ.h"
 #include "moveit/macros/console_colors.h"
 
 using namespace hardware_interface;
@@ -27,7 +27,7 @@ DobotM1HWI::DobotM1HWI(ros::NodeHandle& nh) : nh_(nh), _first(true){
 	non_realtime_loop_ = nh_.createTimer(update_freq, &DobotM1HWI::update, this);
 
 	_xyz_client.reset(new ros::ServiceClient());
-	*_xyz_client = nh_.serviceClient<nkg_demo_msgs::XYZ>("get_xyz");
+	*_xyz_client = nh_.serviceClient<nkg_demo_msgs::GetXYZ>("get_xyz");
 	_xyz_client->waitForExistence(ros::Duration(5.0));
 
 	_alarm_sub = nh_.subscribe("get_alarm", 5, &DobotM1HWI::alarmCB, this);
@@ -219,8 +219,8 @@ void DobotM1HWI::write(const ros::Duration& elapsed_time) {
 			}
 		}
 		else{
-			nkg_demo_msgs::XYZ::Request  req;
-			nkg_demo_msgs::XYZ::Response res;
+			nkg_demo_msgs::GetXYZ::Request  req;
+			nkg_demo_msgs::GetXYZ::Response res;
 			req.joints.assign(joint_position_command_.begin(), joint_position_command_.begin()+4);
 			if(_xyz_client->call(req,res)){			
 				CPCmd cmd;
